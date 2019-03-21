@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.utils.timezone import now
-from apps.petit.models import product, commerce , order, orderdetail
+from apps.petit.models import Product, Commerce , Order, Orderdetail
 from apps.petit.util import obtenerIP, obtenerFechaExpiracion
 from apps.petit.apiTPaga import ApiTPaga
 from django.contrib import messages
@@ -13,7 +13,7 @@ def inicio(request):
 
 
 def listarProductos(request):
-        productos = product.objects.all()
+        productos = Product.objects.all()
         return render(
         request, 'petit/productos.html', {"productos": productos})
 
@@ -23,14 +23,14 @@ def listarProductos(request):
 def hacerOrden(request):
         print("Hola soy Miguelo en python")
         if request.method == 'POST':
-                order_id = order.objects.count() + 1
+                order_id = Order.objects.count() + 1
                 n_product = 'Collar GPS'
                 v_price = 100
                 arr_items = {'name': n_product,
                                 'value': v_price}
                 total_amount = 100
                 k_idcommerce = 1
-                terminal_id = commerce.objects.filter(k_idcommerce=k_idcommerce).values_list('n_commerce', flat=True)
+                terminal_id = Commerce.objects.filter(k_idcommerce=k_idcommerce).values_list('n_commerce', flat=True)
                 commerce = [entry for entry in terminal_id]
                 #terminal_id = commerce.objects.filter(k_idcommerce=k_idcommerce).values('n_commerce')
                 ip_address = obtenerIP(request)
@@ -49,13 +49,13 @@ def hacerOrden(request):
                         )
                         return redirect('/petit/productos')
 
-                OrderObj, created = order.objects.create(k_idorder=order_id, f_dateorder=now(
+                OrderObj, created = Order.objects.create(k_idorder=order_id, f_dateorder=now(
                 ), n_tokenorder=response['idempotency_token'], n_status='CRE', v_total=total_amount, k_idcommerce=k_idcommerce)
                 if created:
                         OrderObj.save()
-                        detail_id = orderdetail.objects.count() + 1
+                        detail_id = Orderdetail.objects.count() + 1
                         quantity = int(request.POST['cantidad'])
-                        orderdetailObj, createdDetail = orderdetail.objects.create(
+                        orderdetailObj, createdDetail = Orderdetail.objects.create(
                         k_iddetail=detail_id, q_quantity=quantity, v_subtotal=total_amount, k_idorder=order_id)
 
                         if createdDetail:
