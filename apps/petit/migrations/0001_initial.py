@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-         migrations.CreateModel(
+        migrations.CreateModel(
             name='commerce',
             fields=[
                 ('k_idcommerce', models.IntegerField(primary_key=True, serialize=False)),
