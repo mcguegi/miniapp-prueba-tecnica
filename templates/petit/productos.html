@@ -1,0 +1,52 @@
+{% extends 'base/base.html'%}
+
+{% block title%} Productos {% endblock %}
+
+
+
+{% block body_content%}
+
+<div class="container purchaseItems">
+    <h4>Adquiere tus productos</h4>
+    <div class="container row">
+        <div class="col-sm-6">
+            <div class="product-itemC men">
+                <div class="product_image">
+                    <img src="images/collarVenta.jpg" alt="">
+                </div>
+                <div class="favorite favorite_left"></div>
+                <div class="product_info">
+                    <h6 class="product_name"><a href="single.html">Collar para perro/gato con localizador</a>
+                    </h6>
+                    <div class="product_price">$100</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="one">
+                <span class="selColor" name="selColor">Selecciona el color </span><br>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Rojo</option>
+                    <option>Negro</option>
+                    <option>Blanco</option>
+                    <option>Azul</option>
+                    <option>Rosado</option>
+                </select>
+            </div>
+            <div class="one">
+                <span class="selColor" name="selColor">Selecciona la cantidad </span><br>
+                <input class="form-control" type="number" name="cantidad" id="cantidad" min="0" onchange="actualizarPrecio(this.value)">
+            </div>
+            <div class="one">
+                <span>Total a pagar:</span>
+                <div class="totalCompra" id="totalCompra" name="totalCompra">
+                    <input id="totalC" name="totalC" class="form-control totalC" type="text" value="$0" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <button id="pagar" type="submit" class="btn btn-pagos btn-lg btn-block">Pagar</button>
+    </div>
+</div>
+{% endblock %}

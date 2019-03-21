@@ -19,6 +19,12 @@ STATIC_DIR = os.path.join(BASE_DIR,'static')
 MEDIA_DIR = os.path.join(BASE_DIR,'media')
 
 
+
+# TPaga API Info
+TPAGA_API_URL = 'http://stag.wallet.tpaga.co/merchants/api/v1/payment_requests'
+TPAGA_API_USER = 'miniapp-gato3'
+TPAGA_API_PASSWORD = 'miniappma-123'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -40,8 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.pagos',
-    'apps.petit'
+    'apps.petit',
 ]
 
 MIDDLEWARE = [
