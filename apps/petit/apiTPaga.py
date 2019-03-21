@@ -2,6 +2,8 @@ import requests
 import base64
 import secrets
 import json
+from requests.auth import HTTPBasicAuth
+from urllib.parse import urljoin
 from django.conf import settings
 
 
@@ -10,13 +12,13 @@ class ApiTPaga:
     # Cabeceras
     def __init__(self):
         """ auth_string = "{}:{}".format(settings.TPAGA_API_USER,settings.TPAGA_API_PASSWORD)
-        #Se codifica el usuario y la contraseña del API en base64 y posteriormente se convierte a string para poder ponerlo en la cabecera de autorizacion
+        # Se codifica el usuario y la contraseña del API en base64 y posteriormente se convierte a string para poder ponerlo en la cabecera de autorizacion
         auth_encode = base64.b64encode(bytes(auth_string, 'utf-8'))
         auth_var = auth_encode.decode('ascii')
- """
-
+                    'Authorization': 'Basic bWluaWFwcC1nYXRvMzptaW5pYXBwbWEtMTIz' ,
+        """
+        self.auth = HTTPBasicAuth(settings.TPAGA_API_USER,settings.TPAGA_API_PASSWORD)
         self.headers = {
-            'Authorization': 'Basic bWluaWFwcC1nYXRvMzptaW5pYXBwbWEtMTIz' ,
             'Cache-Control': 'no-cache',
             'Content-Type': 'application/json'
         }
@@ -27,7 +29,7 @@ class ApiTPaga:
         # Se organizan en un diccionario la información de la orden para solicitar el pago
         datos_solicitud_pago = {
             'cost': int(total_amount),
-            'purchase_details_url': '',
+            'purchase_details_url': 'https://localhost:8000/petit/pagar_productos/' + str(order_id),
             'voucher_url': '',
             'idempotency_token': secrets.token_hex(16),
             'order_id': order_id,
@@ -42,11 +44,11 @@ class ApiTPaga:
         datos_solicitud_pago = json.dumps(datos_solicitud_pago, ensure_ascii=False)
 
         # Se accede al endpoint para crear una solicitud de pago
-        url_sol_pago = settings.TPAGA_API_URL+'/create'
+        url_sol_pago = urljoin(settings.TPAGA_API_URL,'create')
 
         # Se intenta hacer la petición POST al API con los el JSON a la url_sol_pago , si esto no funciona entra al catch y reporta el error
         try:
-            res = requests.post(url_sol_pago, data=datos_solicitud_pago, headers=self.headers)
+            res = requests.post(url_sol_pago, data=datos_solicitud_pago, headers=self.headers , auth=self.auth)
         except requests.exceptions.RequestException as error:
             raise error
 

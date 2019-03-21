@@ -37,11 +37,7 @@ def hacerOrden(request):
                 expiration_date = obtenerFechaExpiracion()
                 print(str(expiration_date))
                 requestAPI = ApiTPaga()
-                response = None
-                
-                
-                
-
+                #response = None
                 response = requestAPI.solicitar_hacer_pago(
                 order_id, ip_address, str(commerce), arr_items, total_amount, str(expiration_date))
                 print(response['idempotency_token'])
