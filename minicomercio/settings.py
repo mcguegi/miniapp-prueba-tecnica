@@ -33,20 +33,9 @@ TPAGA_API_PASSWORD = 'miniappma-123'
 SECRET_KEY = 'q)uhi*jc$^&*$apf$n241@(((i588*1bvo7*+*5mncg(ilj6q2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
-DATABASES['default'] = dj_database_url.config()
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-ALLOWED_HOSTS = ['*']
-
-DEBUG = False
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
 # Application definition
 
@@ -152,3 +141,15 @@ MEDIA_URL = '/media/'
 
 
 
+DATABASES = { 'default': dj_database_url.config() }
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+DEBUG = False
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
