@@ -133,13 +133,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR,]
-
+STATIC_ROOT = STATIC_DIR
 
 #MEDIA
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
-
-
 
 DATABASES = { 'default': dj_database_url.config() }
 
