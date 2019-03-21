@@ -26,7 +26,6 @@ class Order(models.Model):
     n_tokenpayment = models.CharField(max_length=100, blank=True, null=True)
     n_status = models.CharField(max_length=3)
     v_total = models.IntegerField()
-    k_iddetail = models.IntegerField(blank=True, null=True)
     k_idcommerce = models.ForeignKey(Commerce, models.DO_NOTHING, db_column='k_idcommerce', blank=True, null=True)
 
     class Meta:
@@ -45,12 +44,12 @@ class Orderdetail(models.Model):
         managed = False
         db_table = 'orderdetail'
 
-
 class Product(models.Model):
     k_idproduct = models.IntegerField(primary_key=True)
     n_product = models.CharField(max_length=50)
     n_description = models.CharField(max_length=200, blank=True, null=True)
     k_idcommerce = models.IntegerField(blank=True, null=True)
+    v_price = models.IntegerField()
 
     class Meta:
         managed = False

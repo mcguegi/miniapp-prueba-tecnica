@@ -1,4 +1,5 @@
 {% extends 'base/base.html'%}
+{% load staticfiles%}
 
 {% block title%} Productos {% endblock %}
 
@@ -10,17 +11,24 @@
     <h4>Adquiere tus productos</h4>
     <div class="container row">
         <div class="col-sm-6">
-            <div class="product-itemC men">
-                <div class="product_image">
-                    <img src="images/collarVenta.jpg" alt="">
+            <form action="{% url 'petit:hacerOrden' %}" method="POST">
+                {% csrf_token %}
+                {% for producto in productos %}
+                <div class="product-itemC men">
+                    <div class="product_image">
+                        <img src="{% static 'images/collarVenta.jpg' %} " alt="">
+                    </div>
+                    <div class="favorite favorite_left"></div>
+                    <div class="product_info">
+                        <h6 class="product_name" id="product_name{{producto.k_idproduct}}" name="product_name{{producto.k_idproduct}}">{{ producto.n_product }}</h6>
+                        <div id="pricediv{{producto.k_idproduct}}" name="pricediv{{producto.k_idproduct}}" class="product_price">$ {{producto.v_price}}
+                            <input type="hidden" value="{{producto.v_price}}" id="product_price{{producto.k_idproduct}}" name="product_price{{producto.k_idproduct}}">
+                            <input type="hidden" value="{{producto.k_idcommerce}}" id="product_commerce{{producto.k_idproduct}}" name="product_commerce{{producto.k_idproduct}}">
+                        </div>
+                        <input type="hidden" name="product_id{{producto.k_idproduct}}" id="product_id{{producto.k_idproduct}}" value="{{producto.k_idproduct}}">
+                    </div>
                 </div>
-                <div class="favorite favorite_left"></div>
-                <div class="product_info">
-                    <h6 class="product_name"><a href="single.html">Collar para perro/gato con localizador</a>
-                    </h6>
-                    <div class="product_price">$100</div>
-                </div>
-            </div>
+                {% endfor %}
         </div>
         <div class="col-sm-6">
             <div class="one">
@@ -35,7 +43,8 @@
             </div>
             <div class="one">
                 <span class="selColor" name="selColor">Selecciona la cantidad </span><br>
-                <input class="form-control" type="number" name="cantidad" id="cantidad" min="0" onchange="actualizarPrecio(this.value)">
+                <input class="form-control" type="number" name="cantidad" id="cantidad" min="0"
+                    onchange="actualizarPrecio(this.value)">
             </div>
             <div class="one">
                 <span>Total a pagar:</span>
@@ -47,6 +56,8 @@
     </div>
     <div class="container">
         <button id="pagar" type="submit" class="btn btn-pagos btn-lg btn-block">Pagar</button>
+        </form>
+
     </div>
 </div>
 {% endblock %}

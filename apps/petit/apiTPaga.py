@@ -9,15 +9,14 @@ class ApiTPaga:
 
     # Cabeceras
     def __init__(self):
-
+        """ auth_string = "{}:{}".format(settings.TPAGA_API_USER,settings.TPAGA_API_PASSWORD)
         #Se codifica el usuario y la contraseña del API en base64 y posteriormente se convierte a string para poder ponerlo en la cabecera de autorizacion
-        auth_encode = base64.b64encode(
-            bytes(str(settings.TPAGA_API_USER+':'+settings.TPAGA_API_PASSWORD), 'utf-8'))
+        auth_encode = base64.b64encode(bytes(auth_string, 'utf-8'))
         auth_var = auth_encode.decode('ascii')
-
+ """
 
         self.headers = {
-            'Authorization': 'Basic ' + str(auth_var),
+            'Authorization': 'Basic bWluaWFwcC1nYXRvMzptaW5pYXBwbWEtMTIz' ,
             'Cache-Control': 'no-cache',
             'Content-Type': 'application/json'
         }
@@ -43,7 +42,7 @@ class ApiTPaga:
         datos_solicitud_pago = json.dumps(datos_solicitud_pago, ensure_ascii=False)
 
         # Se accede al endpoint para crear una solicitud de pago
-        url_sol_pago = settings.TPAGA_URL_API+'/create'
+        url_sol_pago = settings.TPAGA_API_URL+'/create'
 
         # Se intenta hacer la petición POST al API con los el JSON a la url_sol_pago , si esto no funciona entra al catch y reporta el error
         try:
@@ -60,7 +59,7 @@ class ApiTPaga:
     def confirmar_estado_sol_pago (self, token) :
 
         # Se intenta acceder al API con el token de una solicitud de pago
-        URL_confirmacion_estado = settings.TPAGA_URL_API + '/' + token + '/info'
+        URL_confirmacion_estado = settings.TPAGA_API_URL + '/' + token + '/info'
         try:
             res = requests.get(URL_confirmacion_estado , headers=self.headers)
         except requests.exceptions.RequestException as error:
@@ -74,7 +73,7 @@ class ApiTPaga:
 
     def confirmar_entrega (self, token):
         # Endpoint para notificar explicitamente a TPaga de la entrega del producto/servicio
-        URL_confirmacion_estado = settings.TPAGA_URL_API + '/confirm_delivery'
+        URL_confirmacion_estado = settings.TPAGA_API_URL + '/confirm_delivery'
 
         # se envia el token del payment_request y se formatea como JSON
         datos_solicitud = {'payment_request': token}
@@ -93,7 +92,7 @@ class ApiTPaga:
 
     def revertir_pago(self, token):
         # Endpoint para notificar explicitamente a TPaga de la entrega del producto/servicio
-        URL_confirmacion_estado = settings.TPAGA_URL_API + '/confirm_delivery'
+        URL_confirmacion_estado = settings.TPAGA_API_URL + '/confirm_delivery'
 
         # se envia el token del payment_request y se formatea como JSON
         datos_solicitud = {'payment_request': token}
