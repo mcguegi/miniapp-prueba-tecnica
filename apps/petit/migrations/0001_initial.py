@@ -11,8 +11,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Commerce',
+         migrations.CreateModel(
+            name='commerce',
             fields=[
                 ('k_idcommerce', models.IntegerField(primary_key=True, serialize=False)),
                 ('n_commerce', models.CharField(max_length=50)),
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Order',
+            name='order',
             fields=[
                 ('k_idorder', models.IntegerField(primary_key=True, serialize=False)),
                 ('f_dateorder', models.DateField()),
@@ -33,7 +33,6 @@ class Migration(migrations.Migration):
                 ('n_tokenpayment', models.CharField(blank=True, max_length=100, null=True)),
                 ('n_status', models.CharField(max_length=3)),
                 ('v_total', models.IntegerField()),
-                ('k_iddetail', models.IntegerField(blank=True, null=True)),
             ],
             options={
                 'db_table': 'order',
@@ -41,7 +40,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Orderdetail',
+            name='orderdetail',
             fields=[
                 ('k_iddetail', models.IntegerField(primary_key=True, serialize=False)),
                 ('q_quantity', models.IntegerField()),
@@ -53,12 +52,13 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Product',
+            name='product',
             fields=[
                 ('k_idproduct', models.IntegerField(primary_key=True, serialize=False)),
                 ('n_product', models.CharField(max_length=50)),
                 ('n_description', models.CharField(blank=True, max_length=200, null=True)),
                 ('k_idcommerce', models.IntegerField(blank=True, null=True)),
+                ('v_price', models.IntegerField()),
             ],
             options={
                 'db_table': 'product',
