@@ -145,18 +145,14 @@ def confirmarPago(request , order_id):
 
   except Orderbill.DoesNotExist:
     raise Http404
+    return redirect('petit/pagarProductos' + str(order_id))
 
 
-
-
-
-
-
-  return 'hice algo'
-
-
-def consultaOrden(request):
-  return 'lala'
+def consultarTransacciones(request):
+  orders = Orderbilldetail.objects.select_related('k_idorderbill').select_related('k_idproduct').all().order_by('k_idorderbill')
+  print(orders)
+  contextTransactions = {"orders" : orders}
+  return render(request,'petit/consultarTransacciones.html',contextTransactions)
 
 
 # Views relacionadas con los usuarios

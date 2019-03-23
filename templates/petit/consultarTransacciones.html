@@ -1,0 +1,36 @@
+{% extends 'base/base.html'%}
+{% load staticfiles%}
+
+{% block title %}
+Consulta tus transacciones
+{% endblock %}
+
+
+{% block body_content %}
+<div class="container transacciones" style="margin-top: 180px" >
+	<table class="table">
+		<thead>
+			<tr class="table-info">
+				<th scope="col">Orden</th>
+				<th scope="col">Fecha</th>
+				<th scope="col">Estado</th>
+				<th scope="col">Cantidad</th>
+				<th scope="col">Producto</th>
+				<th scope="col">Valor Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for order in orders%}
+			<tr class="table-info">
+				<th scope="row">{{ order.k_idorderbill.k_idorderbill }}</th>
+				<td>{{ order.k_idorderbill.f_dateorderbill }}</td>
+				<td>{{ order.k_idorderbill.n_status }}</td>
+				<td>{{ order.q_quantity }}</td>
+				<td>{{ order.k_idproduct.n_product }}</td>
+				<td>${{ order.k_idorderbill.v_total }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

@@ -10,7 +10,7 @@ urlpatterns = [
     path('hacerOrden', views.hacerOrden, name='hacerOrden'),
     path('pagarOrden/<int:order_id>', views.pagarOrden, name='pagarOrden'),
     path('confirmarPago/<int:order_id>', views.confirmarPago, name='confirmarPago'),
-    path('consultarOrden', views.consultaOrden, name='consultarOrden'),
+    path('consultarTransacciones', views.consultarTransacciones, name='consultarTransacciones'),
 
 
 ]
