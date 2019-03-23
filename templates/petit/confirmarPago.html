@@ -8,6 +8,21 @@ Confirmación Pago
 
 {% block body_content %}
 <div class="container confirmacionPago" style="margin-top: 180px">
-	<p>Ya funcione y confirmé el pago xdd</p>
+	Factura 
+
+	<div class="card" style="width: 18rem;">
+		<img class="card-img-top" src="{% static 'images/logoTPaga.png'%}" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">Confirmación Pago</h5>
+			<p class="card-text">¡Felicitaciones! Has pagado con la billetera TPaga . A continuación la información de tu compra.</p>
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item">Producto : {{ products.name }}</li>
+			<li class="list-group-item">Valor Unitario : {{ quantity }}</li>
+			<li class="list-group-item">Cantidad : {{ products.value }}</li>
+			<li class="list-group-item">TOTAL {{ order.v_total }}</li>
+		</ul>
+	</div>
+
 </div>
 {% endblock %}

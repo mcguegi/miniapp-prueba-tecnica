@@ -88,6 +88,7 @@ def pagarOrden(request , order_id):
   for detail in details:
     kproducto = detail.k_idproduct
     p = str(kproducto)
+    q = detail.q_quantity
     print(str(kproducto))
     print(type(p))
     product = Product.objects.get(k_idproduct = int(p))
@@ -99,7 +100,7 @@ def pagarOrden(request , order_id):
 
   contextPayOrder = {"order" : order ,
                     "products" : productDict,
-                    "quantity" : len(arr_items)
+                    "quantity" : q
                     }
 
   return render(request,'petit/pagarProductos.html' , contextPayOrder)
@@ -119,8 +120,9 @@ def confirmarPago(request , order_id):
 
     if order.n_status == "CRE":
       statusResponse = responsePay["status"]
-      order.n_status == statusResponse[:3].upper()
-      order.save()
+      #order.n_status = statusResponse[:3].upper()
+      #order.update(update_fields=['n_status'])
+      orderU = Orderbill.objects.filter(k_idorderbill = order_id).update(n_status= statusResponse[:3].upper())
 
     details = Orderbilldetail.objects.filter(k_idorderbill = order_id)
     arr_items = []
@@ -138,7 +140,7 @@ def confirmarPago(request , order_id):
                 }
       arr_items.append(productDict)
 
-    contextCheckPay = {"order" : order , "products" : productDict}
+    contextCheckPay = {"order" : order , "products" : productDict , "quantity" : q}
     return render(request, 'petit/confirmarPago.html', contextCheckPay)
 
   except Orderbill.DoesNotExist:
