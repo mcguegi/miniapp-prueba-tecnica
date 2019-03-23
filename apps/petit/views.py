@@ -5,11 +5,9 @@ from apps.petit.util import obtenerIP, obtenerFechaExpiracion
 from apps.petit.apiTPaga import ApiTPaga
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 import json
 import logging
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__) 
 
 # Views relacionadas con el comercio y sus productos
 
@@ -166,8 +164,8 @@ def revertirPago(request):
       responseRevert = None
       responseRevert = requestAPI.revertir_pago(token)
       if "error_code" in responseRevert:
-        #logger.error('{} {}'.format(responseRevert.status_code, responseRevert.json()))
         print(responseRevert)
+        
       statusResponse = responseRevert["status"]
       orderU = Orderbill.objects.filter(k_idorderbill = order_id).update(n_status= statusResponse[:3].upper())
       
@@ -181,9 +179,7 @@ def revertirPago(request):
 
 # Views relacionadas con los usuarios
 
-from django.contrib.auth import logout
 
 def logout_view(request):
     logout(request)
     return redirect('login')
-    # Redirect to a success page

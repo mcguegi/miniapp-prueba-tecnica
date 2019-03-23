@@ -9,14 +9,16 @@ class ApiTPaga:
 
     # Cabeceras
     def __init__(self):
-        """ auth_string = "{}:{}".format(settings.TPAGA_API_USER,settings.TPAGA_API_PASSWORD)
+        
+        auth_string = "{}:{}".format(settings.TPAGA_API_USER,settings.TPAGA_API_PASSWORD)
         #Se codifica el usuario y la contraseña del API en base64 y posteriormente se convierte a string para poder ponerlo en la cabecera de autorizacion
         auth_encode = base64.b64encode(bytes(auth_string, 'utf-8'))
         auth_var = auth_encode.decode('ascii')
-"""
+        
+        # Base 64 Auth data bWluaWFwcC1nYXRvMzptaW5pYXBwbWEtMTIz'
 
         self.headers = {
-            'Authorization': 'Basic bWluaWFwcC1nYXRvMzptaW5pYXBwbWEtMTIz',
+            'Authorization': 'Basic '+str(auth_var),
             'Cache-Control': 'no-cache',
             'Content-Type': 'application/json'
         }

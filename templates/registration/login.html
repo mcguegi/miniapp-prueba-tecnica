@@ -8,7 +8,7 @@
   <meta name="author" content="">
 
   <title>Inicie Sesion</title>
-
+  <link rel='icon' href="{% static 'images/pet.ico' %}" type='image/x-icon'/ >
   <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
 
   <!-- Bootstrap core CSS -->
@@ -23,7 +23,7 @@
     <form class="form-signin" method="POST">
       {% csrf_token %}
       <img class="mb-4" src="{% static 'images/pet.svg' %}" alt="logoPetit" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Por favor inicie sesion</h1>
+      <h1 class="h3 mb-3 font-weight-normal">PETIT</h1>
       <label for="inputEmail" class="sr-only">Usuario</label>
       <input type="text" id="inputUser" name="username" class="form-control" placeholder="Usuario">
       <label for="inputPassword" class="sr-only">Contraseña</label>

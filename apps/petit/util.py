@@ -2,6 +2,7 @@ from django.utils.timezone import now
 from datetime import timedelta
 import datetime
 
+# Funcion que retorna la IP del dispositivo que hace la solicitud de pago
 
 def obtenerIP(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -11,6 +12,7 @@ def obtenerIP(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
+# Funcion que retorna la fecha de expiracion (Un dia despues de la solicitud)
 
 def obtenerFechaExpiracion():
     exp_date = datetime.datetime.utcnow().replace(

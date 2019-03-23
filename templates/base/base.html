@@ -6,12 +6,13 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>{% block title%} Base {% endblock%}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% block extrahead %}
     {% endblock extrahead %}
-
+    <link rel='icon' href="{% static 'images/pet.ico' %}" type='image/x-icon'/ >
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap4/bootstrap.min.css' %}">
     <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
@@ -49,8 +50,8 @@
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="currency_selection">
-                                            <li><a href="#">usd</a></li>
-                                            <li><a href="#">eur</a></li>
+                                            <li><a href="#">COP</a></li>
+                                            <li><a href="#">USD</a></li>
                                         </ul>
                                     </li>
                                     <li class="language">
@@ -59,7 +60,7 @@
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="language_selection">
-                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Español</a></li>
                                         </ul>
                                     </li>
                                     <li class="account">
@@ -103,7 +104,6 @@
                                         <li class="checkout">
                                             <a href="#">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                <span id="checkout_items" class="checkout_items">2</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -153,8 +153,8 @@
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="menu_selection">
-                                <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-                                <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                                <li><a href="{% url 'login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i>Entrar</a></li>
+                                <li><a href="{% url 'logout' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>Salir</a></li>
                             </ul>
                         </li>
                         <li><a href="{% url 'petit:inicio' %}">Inicio</a></li>
@@ -197,8 +197,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer_nav_container">
-                        <div class="cr">©2018 All Rights Reserverd. This template is made with <i
-                            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorlib</a></div>
+                        <div class="cr">©2018 Todos los derechos reservados. Plantilla hecha con <i
+                            class="fa fa-heart-o" aria-hidden="true"></i> por <a href="#">Colorlib</a></div>
                         </div>
                     </div>
                 </div>

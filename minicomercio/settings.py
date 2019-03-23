@@ -141,6 +141,8 @@ STATICFILES_DIRS = [STATIC_DIR, ]
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
+
+# LOGIN Y LOGOUT
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = reverse_lazy('petit:inicio')
 LOGOUT_REDIRECT_URL = reverse_lazy('petit:inicio')
