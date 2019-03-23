@@ -1,9 +1,9 @@
-window.onload = function(){
-    let cantidadCampo =document.getElementById("cantidad");
+/*window.onload = function(){
+    let cantidadCampo =document.getElementById("quantity");
     cantidadCampo.onkeypress = function (evt){
         evt.preventDefault();
     };
-}
+}*/
 
 function actualizarPrecio(valor) {
     let precioProducto = document.getElementById("product_price1").getAttribute('value');

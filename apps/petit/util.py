@@ -1,5 +1,7 @@
 from django.utils.timezone import now
 from datetime import timedelta
+import datetime
+
 
 def obtenerIP(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -11,5 +13,7 @@ def obtenerIP(request):
 
 
 def obtenerFechaExpiracion():
-    exp_date = now() + timedelta(days=1)
+    exp_date = datetime.datetime.utcnow().replace(
+        tzinfo=datetime.timezone.utc) + timedelta(days=1)
+    exp_date = exp_date.isoformat()
     return exp_date

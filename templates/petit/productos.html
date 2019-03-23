@@ -20,8 +20,9 @@
                     </div>
                     <div class="favorite favorite_left"></div>
                     <div class="product_info">
-                        <h6 class="product_name" id="product_name{{producto.k_idproduct}}" name="product_name{{producto.k_idproduct}}">{{ producto.n_product }}</h6>
+                        <h6 class="product_name" id="product_n{{producto.k_idproduct}}" name="product_n{{producto.k_idproduct}}">{{ producto.n_product }}</h6>
                         <div id="pricediv{{producto.k_idproduct}}" name="pricediv{{producto.k_idproduct}}" class="product_price">$ {{producto.v_price}}
+                            <input type="hidden" name="product_name{{producto.k_idproduct}}" id="product_name{{producto.k_idproduct}}" value="{{ producto.n_product }}">
                             <input type="hidden" value="{{producto.v_price}}" id="product_price{{producto.k_idproduct}}" name="product_price{{producto.k_idproduct}}">
                             <input type="hidden" value="{{producto.k_idcommerce}}" id="product_commerce{{producto.k_idproduct}}" name="product_commerce{{producto.k_idproduct}}">
                         </div>
@@ -43,7 +44,7 @@
             </div>
             <div class="one">
                 <span class="selColor" name="selColor">Selecciona la cantidad </span><br>
-                <input class="form-control" type="number" name="cantidad" id="cantidad" min="0"
+                <input class="form-control" type="number" name="quantity" id="quantity" min="0"
                     onchange="actualizarPrecio(this.value)">
             </div>
             <div class="one">
@@ -55,7 +56,7 @@
         </div>
     </div>
     <div class="container">
-        <button id="pagar" type="submit" class="btn btn-pagos btn-lg btn-block">Pagar</button>
+        <button id="pagar" type="submit" class="btn btn-pagos btn-lg btn-block">Solicitar Pago</button>
         </form>
 
     </div>

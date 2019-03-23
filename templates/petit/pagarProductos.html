@@ -1,13 +1,43 @@
-{% extends 'base/base.html' %}
-
+{% extends 'base/base.html'%}
+{% load staticfiles%}
 
 {% block title %}
-    Pago de Productos
-{% endblock title %}
+Pago de Productos
+{% endblock %}
 
 
 {% block body_content %}
-    <p> Hola Camilita te amo!!! </p>
-{% endblock body_content %}
+<div class="container detalle" style="margin-top: 180px">
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">ID de la Orden</th>
+			<th scope="col">Producto</th>
+			<th scope="col">Cantidad</th>
+			<th scope="col">Precio Unitario</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">{{ order.k_idorderbill }}</th>
+			<td>{{ products.name }}</td>
+			<td>{{ quantity }}</td>
+			<td>{{ products.value }}</td>
+		</tr>
+		<tr>
+			<th scope="row">Total</th>
+			<td></td>
+			<td></td>
+			<td>{{ order.v_total }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<form action="{{ order.n_tokenpayment }}">
+	<input id="pagarO" type="submit" class="btn btn-pagos btn-lg btn-block" value="Pagar Orden">
+</form>
+
+</div>
+{% endblock %}
 
 
