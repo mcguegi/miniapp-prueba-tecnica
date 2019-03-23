@@ -4,10 +4,10 @@ from apps.petit.models import Product, Customer, Orderbill, Orderbilldetail
 from apps.petit.util import obtenerIP, obtenerFechaExpiracion
 from apps.petit.apiTPaga import ApiTPaga
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 import json
 
 # Views relacionadas con el comercio y sus productos
-
 
 def inicio(request):
  return render(request, 'petit/inicio.html')
@@ -120,8 +120,6 @@ def confirmarPago(request , order_id):
 
     if order.n_status == "CRE":
       statusResponse = responsePay["status"]
-      #order.n_status = statusResponse[:3].upper()
-      #order.update(update_fields=['n_status'])
       orderU = Orderbill.objects.filter(k_idorderbill = order_id).update(n_status= statusResponse[:3].upper())
 
     details = Orderbilldetail.objects.filter(k_idorderbill = order_id)
@@ -131,8 +129,6 @@ def confirmarPago(request , order_id):
       kproducto = detail.k_idproduct
       q = detail.q_quantity
       p = str(kproducto)
-      print(str(kproducto))
-      print(type(p))
       product = Product.objects.get(k_idproduct = int(p))
       productDict = {
                   "name" : product.n_product,
@@ -147,10 +143,9 @@ def confirmarPago(request , order_id):
     raise Http404
     return redirect('petit/pagarProductos' + str(order_id))
 
-
+@login_required(login_url='/login/')
 def consultarTransacciones(request):
   orders = Orderbilldetail.objects.select_related('k_idorderbill').select_related('k_idproduct').all().order_by('k_idorderbill')
-  print(orders)
   contextTransactions = {"orders" : orders}
   return render(request,'petit/consultarTransacciones.html',contextTransactions)
 
