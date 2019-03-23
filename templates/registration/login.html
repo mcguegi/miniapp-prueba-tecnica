@@ -22,7 +22,7 @@
   <div class="container col-sm-3 col-md-6 col-lg-6">
     <form class="form-signin" method="POST">
       {% csrf_token %}
-      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <img class="mb-4" src="{% static 'images/pet.svg' %}" alt="logoPetit" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Por favor inicie sesion</h1>
       <label for="inputEmail" class="sr-only">Usuario</label>
       <input type="text" id="inputUser" name="username" class="form-control" placeholder="Usuario">
@@ -33,14 +33,14 @@
           <input type="checkbox" value="remember-me"> Recuerdeme
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesion Operador</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      <button class="btn btn-lg btn-warning btn-block" type="submit">Iniciar Sesion Operador</button>
     </form>
-  </div>
-  <div class="container col-sm-3 col-md-6 col-lg-6">
     <form class="form-signin" action="{% url 'petit:inicio' %}">
-      <input class="btn btn-lg btn-primary btn-block" type="submit" value="Entrar como cliente" />
+      <input class="btn btn-lg btn-warning btn-block" type="submit" value="Entrar como cliente" />
     </form>
   </div>
+  <!-- <div class="container col-sm-3 col-md-6 col-lg-6">
+
+  </div> -->
 </body>
 </html>

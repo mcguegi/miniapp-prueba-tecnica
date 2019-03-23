@@ -6,6 +6,10 @@ from apps.petit.apiTPaga import ApiTPaga
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 import json
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__) 
 
 # Views relacionadas con el comercio y sus productos
 
@@ -149,5 +153,37 @@ def consultarTransacciones(request):
   contextTransactions = {"orders" : orders}
   return render(request,'petit/consultarTransacciones.html',contextTransactions)
 
+@login_required(login_url='/login/')
+def revertirPago(request):
+  if request.method == 'POST':
+    requestObj = request.POST
+    order_id = int(requestObj.get('order_id',False))
+    try:
+      order = Orderbill.objects.get(k_idorderbill = order_id)
+      token = str(order.n_tokenorderbill)
+      print(token)
+      requestAPI = ApiTPaga()
+      responseRevert = None
+      responseRevert = requestAPI.revertir_pago(token)
+      if "error_code" in responseRevert:
+        #logger.error('{} {}'.format(responseRevert.status_code, responseRevert.json()))
+        print(responseRevert)
+      statusResponse = responseRevert["status"]
+      orderU = Orderbill.objects.filter(k_idorderbill = order_id).update(n_status= statusResponse[:3].upper())
+      
+      if statusResponse == 'reverted' :
+        return render(request, 'petit/revertirTransaccion.html', {'message': 'La transacción fue revertida'})
+      else :
+        return render(request, 'petit/revertirTransaccion.html', {'message': 'La transacción no fue revertida . Intente de nuevo'})
+    except Orderbill.DoesNotExist:
+      raise Http404
+      return redirect('petit/consultarTransacciones')
 
 # Views relacionadas con los usuarios
+
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+    # Redirect to a success page

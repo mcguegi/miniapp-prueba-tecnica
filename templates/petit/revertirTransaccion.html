@@ -1,0 +1,17 @@
+{% extends 'base/base.html'%}
+{% load staticfiles%}
+
+{% block title %}
+Consulta tus transacciones
+{% endblock %}
+
+
+{% block body_content %}
+<div class="container Revertir" style="margin-top: 180px" >
+	<h3>Revertir Pago</h3>
+	<h5>{{ message }}</h5>
+	<form action="{% url 'petit:consultarTransacciones' %}" >
+		<button id="volver" type="submit" class="btn btn-pagos btn-lg btn-block"> Volver a Transacciones </button>
+	</form>
+</div>
+{% endblock %}

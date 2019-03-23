@@ -13,6 +13,7 @@ urlpatterns = [
     path('pagarOrden/<int:order_id>', views.pagarOrden, name='pagarOrden'),
     path('confirmarPago/<int:order_id>', views.confirmarPago, name='confirmarPago'),
     path('consultarTransacciones', login_required(views.consultarTransacciones), name='consultarTransacciones'),
+    path('revertirTransaccion', login_required(views.revertirPago), name='revertirPago'),
 
 
 ]

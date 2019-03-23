@@ -93,15 +93,15 @@ class ApiTPaga:
 
     def revertir_pago(self, token):
         # Endpoint para notificar explicitamente a TPaga de la entrega del producto/servicio
-        URL_confirmacion_estado = settings.TPAGA_API_URL + '/confirm_delivery'
+        URL_revertir_pago = settings.TPAGA_API_URL + '/refund'
 
         # se envia el token del payment_request y se formatea como JSON
-        datos_solicitud = {'payment_request': token}
+        datos_solicitud = {'payment_request_token': token}
         datos_solicitud = json.dumps(datos_solicitud, ensure_ascii=False)
 
         # Realizo la peticion POST a la API para que la entrega sea confirmada
         try:
-            res = requests.post(URL_confirmacion_estado,
+            res = requests.post(URL_revertir_pago,
                                 data=datos_solicitud, headers=self.headers)
         except requests.exceptions.RequestException as error:
             raise error

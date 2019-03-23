@@ -18,6 +18,7 @@ Consulta tus transacciones
 					<th scope="col">Cantidad</th>
 					<th scope="col">Producto</th>
 					<th scope="col">Valor Total</th>
+					<th scope="col">Accion</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,6 +30,11 @@ Consulta tus transacciones
 					<td>{{ order.q_quantity }}</td>
 					<td>{{ order.k_idproduct.n_product }}</td>
 					<td>${{ order.k_idorderbill.v_total }}</td>
+					<td><form action="{% url 'petit:revertirPago' %}" method="POST">
+						{% csrf_token %}
+						<input type="hidden" value="{{order.k_idorderbill.k_idorderbill }}" name="order_id">
+						<button type="submit" class="btn btn-danger">Revertir</button>
+					</form></td>
 				</tr>
 				{% endfor %}
 			</tbody>
