@@ -10,13 +10,13 @@
 <div class="container purchaseItems">
     <h4>Adquiere tus productos</h4>
     <div class="container row">
-        <div class="col-sm-6">
+        <div class="col-sm-3 col-md-6 col-lg-6">
             <form action="{% url 'petit:hacerOrden' %}" method="POST">
                 {% csrf_token %}
                 {% for producto in productos %}
                 <div class="product-itemC men">
                     <div class="product_image">
-                        <img src="{% static 'images/collarVenta.jpg' %} " alt="">
+                        <img src="{% static 'images/collarVenta.jpg' %} " class="imgPro img-responsive fit-image" alt="">
                     </div>
                     <div class="favorite favorite_left"></div>
                     <div class="product_info">
@@ -31,7 +31,7 @@
                 </div>
                 {% endfor %}
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-3 col-md-6 col-lg-6">
             <div class="one">
                 <span class="selColor" name="selColor">Selecciona el color </span><br>
                 <select class="form-control" id="exampleFormControlSelect1">

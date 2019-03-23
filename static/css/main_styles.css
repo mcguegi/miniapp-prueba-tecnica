@@ -65,8 +65,8 @@ div
 	display: block;
 	position: relative;
 	-webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 ul
 {
@@ -1687,23 +1687,25 @@ section
 
 
 .purchaseItems {
-	margin-top: 180px;
+	margin-top: 12em;
 }
 
 .one {
-    max-width: 65%;
+	max-width: 100%;
+	align-content: center;
+	padding-bottom: 5px;
 }
 
 .two {
-    text-align: center;
-    display: flex;
-    align-items: center;
+	text-align: center;
+	display: flex;
+	align-items: center;
 }
 
 .product-itemC
 {
-	width: 50%;
-	height: 380px;
+	width: 100%;
+	height: 20%;
 	cursor: pointer;
 }
 
@@ -1713,9 +1715,9 @@ section
 	font-size: 20pt;
 	color: #FF6347;
 	display: inline-block;
-    /* float:left;  remove */
-    margin: 10px 10px 0 0;
-    padding: 5px 10px;
+	/* float:left;  remove */
+	margin: 10px 10px 0 0;
+	padding: 5px 10px;
 
 }
 
@@ -1725,4 +1727,19 @@ section
 
 .detalle {
 	margin-top: 180px;
+}
+
+
+.imgPro{
+	width: 100%;
+	height: auto;
+}
+
+@supports(object-fit: cover){
+	.box img{
+		height: 100%;
+		object-fit: cover;
+		object-position: center center;
+	}
+
 }
