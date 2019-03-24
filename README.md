@@ -12,9 +12,9 @@ Las actividades las organicé de la siguiente manera :
   5.1 Creacion de archivo para consumir la TPaga Api y codificar los métodos de solicitar, pagar, confirmar y revertir (3 horas)
   5.2 Definir las vistas para listar los productos del Comercio (30 minutos)
   5.3 Definir las vistas para que el comercio haga las solicitudes a la TPaga Api  ( 10 horas ) 
-6. Pulir y limpiar el código
-7. Autenticación 
-8. Despliegue en Heroku
+6. Pulir y limpiar el código (1 hora)
+7. Autenticación (1 hora)
+8. Despliegue en Heroku (4 horas)
   
 ## Tiempos reales de trabajo
 Las actividades las desarrollé de la siguiente manera : 
@@ -27,14 +27,14 @@ Las actividades las desarrollé de la siguiente manera :
   5.1 Creacion de archivo para consumir la TPaga Api y codificar los métodos de solicitar, pagar, confirmar y revertir (3 horas)
   5.2 Definir las vistas para listar los productos del Comercio (30 minutos)
   5.3 Definir las vistas para que el comercio haga las solicitudes a la TPaga Api  ( 14 horas ) 
-6. Pulir y limpiar el código
-7. Autenticación 
-8. Despliegue en Heroku
+6. Pulir y limpiar el código (1 hora)
+7. Autenticación (1 hora)
+8. Despliegue en Heroku (6 horas)
 
 Observaciones :
 - Las primeras pruebas con la API se hicieron con la herramienta Postman
-- Se usó un servidor ssl para poder hacer peticiones a la API desde el aplicativo
-- Al hacer pruebas desde el celular se observó que el tpaga_payment_url redirigia a la PlayStore y no al app de staging (Se preguntó por Slack)  
+- Se usó un servidor ssl para poder hacer peticiones a la API desde el aplicativo de manera local
+- Al hacer pruebas desde el celular se observó que el tpaga_payment_url redirigia a la Play Store y no al app de staging (Se preguntó por Slack)  y a pesar de que se usaba el navegador Google Chrome, seguia redirigiendo a la Play store
 
 ## Funcionamiento del aplicativo
 ## Autenticación
