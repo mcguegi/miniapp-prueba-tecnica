@@ -25,7 +25,7 @@ def listarProductos(request):
 def hacerOrden(request):
  if request.method == 'POST':
   requestObj = request.POST
-  if(data is None):
+  if(requestObj is None):
     return HttpResponseBadRequest()
   else :
     order_id = Orderbill.objects.count() + 1
