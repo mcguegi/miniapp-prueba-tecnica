@@ -3,6 +3,7 @@ import base64
 import secrets
 import json
 from django.conf import settings
+from urllib.parse import urljoin
 
 
 class ApiTPaga:
@@ -29,8 +30,8 @@ class ApiTPaga:
         # Se organizan en un diccionario la información de la orden para solicitar el pago
         datos_solicitud_pago = {
             'cost': int(total_amount),
-            'purchase_details_url': 'https://192.168.1.56:8000/petit/confirmarPago/' + str(order_id),
-            'voucher_url': 'https://localhost:8000/petit/voucher/' + str(order_id),
+            'purchase_details_url': urljoin(setting.HEROKU_URL,'/petit/confirmarPago/{}'.format(str(order_id))),
+            'voucher_url': urljoin(setting.HEROKU_URL,'/petit/voucher/{}'.format(str(order_id))),
             'idempotency_token': str(secrets.token_hex(16)),
             'order_id': order_id,
             'terminal_id': terminal_id,
@@ -45,7 +46,7 @@ class ApiTPaga:
             datos_solicitud_pago, ensure_ascii=False)
 
         # Se accede al endpoint para crear una solicitud de pago
-        url_sol_pago = settings.TPAGA_API_URL+'/create'
+        url_sol_pago = urljoin(settings.TPAGA_API_URL,'/create')
 
         # Se intenta hacer la petición POST al API con los el JSON a la url_sol_pago , si esto no funciona entra al catch y reporta el error
         try:
@@ -62,7 +63,7 @@ class ApiTPaga:
     def confirmar_estado_sol_pago(self, token):
 
         # Se intenta acceder al API con el token de una solicitud de pago
-        URL_confirmacion_estado = settings.TPAGA_API_URL + '/' + token + '/info'
+        URL_confirmacion_estado = urljoin(settings.TPAGA_API_URL,'/{}/info'.format(token))
         try:
             res = requests.get(URL_confirmacion_estado, headers=self.headers)
         except requests.exceptions.RequestException as error:
@@ -75,7 +76,7 @@ class ApiTPaga:
 
     def confirmar_entrega(self, token):
         # Endpoint para notificar explicitamente a TPaga de la entrega del producto/servicio
-        URL_confirmacion_estado = settings.TPAGA_API_URL + '/confirm_delivery'
+        URL_confirmacion_estado = urljoin(settings.TPAGA_API_URL,'/confirm_delivery')
 
         # se envia el token del payment_request y se formatea como JSON
         datos_solicitud = {'payment_request': token}
@@ -95,7 +96,7 @@ class ApiTPaga:
 
     def revertir_pago(self, token):
         # Endpoint para notificar explicitamente a TPaga de la entrega del producto/servicio
-        URL_revertir_pago = settings.TPAGA_API_URL + '/refund'
+        URL_revertir_pago = urljoin(settings.TPAGA_API_URL,'/refund')
 
         # se envia el token del payment_request y se formatea como JSON
         datos_solicitud = {'payment_request_token': token}

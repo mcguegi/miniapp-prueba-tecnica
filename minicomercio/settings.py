@@ -9,8 +9,6 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-#user = operadorPetit pass =  operador123
-
 import os
 from django.urls import reverse_lazy
 import dj_database_url
@@ -26,6 +24,10 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 TPAGA_API_URL = 'https://stag.wallet.tpaga.co/merchants/api/v1/payment_requests'
 TPAGA_API_USER = 'miniapp-gato3'
 TPAGA_API_PASSWORD = 'miniappma-123'
+
+
+
+HEROKU_URL = 'https://petitapp.herokuapp.com'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
