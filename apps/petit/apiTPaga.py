@@ -30,8 +30,8 @@ class ApiTPaga:
         # Se organizan en un diccionario la información de la orden para solicitar el pago
         datos_solicitud_pago = {
             'cost': int(total_amount),
-            'purchase_details_url': urljoin(setting.HEROKU_URL,'/petit/confirmarPago/{}'.format(str(order_id))),
-            'voucher_url': urljoin(setting.HEROKU_URL,'/petit/voucher/{}'.format(str(order_id))),
+            'purchase_details_url': urljoin(settings.HEROKU_URL,'/petit/confirmarPago/{}'.format(str(order_id))),
+            'voucher_url': urljoin(settings.HEROKU_URL,'/petit/voucher/{}'.format(str(order_id))),
             'idempotency_token': str(secrets.token_hex(16)),
             'order_id': order_id,
             'terminal_id': terminal_id,
