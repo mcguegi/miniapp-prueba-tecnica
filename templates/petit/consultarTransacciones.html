@@ -33,7 +33,7 @@ Consulta tus transacciones
 					<td>${{ order.k_idorderbill.v_total }}</td>
 					<td><form action="{% url 'petit:revertirPago' %}" method="POST">
 						{% csrf_token %}
-						{% if order.k_idorderbill.n_status == 'DEL' %}
+						{% if order.k_idorderbill.n_status == 'CRE' %}
 						<input type="hidden" value="{{order.k_idorderbill.k_idorderbill }}" name="order_id">
 						<button type="submit" class="btn btn-danger">Revertir</button>
 						{% else %}
