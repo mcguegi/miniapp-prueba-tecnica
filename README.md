@@ -37,6 +37,7 @@ Observaciones :
 - Al hacer pruebas desde el celular se observó que el tpaga_payment_url redirigia a la Play Store y no al app de staging (Se preguntó por Slack)  y a pesar de que se usaba el navegador Google Chrome, seguia redirigiendo a la Play store
 
 ## Funcionamiento del aplicativo
+![Login](https://drive.google.com/open?id=1iEgDx5CXyeUrqNs2-UqkBHwLNIKkAr-N)
 ## Autenticación
 ## Mejoras
 ## Despliegue
