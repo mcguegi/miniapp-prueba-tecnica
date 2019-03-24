@@ -37,7 +37,8 @@ Observaciones :
 - Al hacer pruebas desde el celular se observó que el tpaga_payment_url redirigia a la Play Store y no al app de staging (Se preguntó por Slack)  y a pesar de que se usaba el navegador Google Chrome, seguia redirigiendo a la Play store
 
 ## Funcionamiento del aplicativo
-![](https://ibb.co/YQLDkg9)
+<img src="static/images/imgPruebas/1.jpg" alt="Login" height="400" width="250"> 
+Login del aplicativo: El login aplica para un operador del comercio con los datos de autenticación que se proveen más adelante. Para entrar como cliente no es necesario autenticarse y debe dar clic sobre el botón *Entrar como cliente*
 
 ## Autenticación
 
