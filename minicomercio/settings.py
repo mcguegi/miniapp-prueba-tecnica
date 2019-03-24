@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
+
+
 import os
 from django.urls import reverse_lazy
 import dj_database_url
@@ -36,11 +38,6 @@ HEROKU_URL = 'https://petitapp.herokuapp.com'
 SECRET_KEY = 'q)uhi*jc$^&*$apf$n241@(((i588*1bvo7*+*5mncg(ilj6q2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-
-#ALLOWED_HOSTS = ['192.168.1.56','localhost','192.168.0.15']
-
-#'sslserver'
 
 # Application definition
 
@@ -158,7 +155,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
 
-DEBUG = True
+DEBUG = False
 
 try:
     from .local_settings import *
