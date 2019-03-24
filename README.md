@@ -1,6 +1,6 @@
 
 # PetIT :dog: :cat: : Minicomercio (Prueba Técnica TPaga)
-Presentado por : María Camila Guerrero Giraldo
+Presentado por : María Camila Guerrero Giraldo. <br>
 Petit es una tienda para mascotas y ofrece el pago de un único producto (Collar GPS Perros y Gatos). La aplicación fue desarrollada con Django y utilicé una plantilla de Html5Up.net que simula una tienda virtual.
 
 ## Tiempos estimados de trabajo
