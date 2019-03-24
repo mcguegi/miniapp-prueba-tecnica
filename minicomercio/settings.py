@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 from django.urls import reverse_lazy
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,9 +34,9 @@ TPAGA_API_PASSWORD = 'miniappma-123'
 SECRET_KEY = 'q)uhi*jc$^&*$apf$n241@(((i588*1bvo7*+*5mncg(ilj6q2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.56','localhost']
+#ALLOWED_HOSTS = ['192.168.1.56','localhost','192.168.0.15']
 
 
 # Application definition
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'minicomercio.urls'
@@ -88,7 +90,7 @@ WSGI_APPLICATION = 'minicomercio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'minicomercioPetit',
+        'NAME': 'Petit',
         'USER': 'postgres',
         'PASSWORD': '271096',
         'HOST': 'localhost',
@@ -134,8 +136,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [STATIC_DIR, ]
-
+# STATICFILES_DIRS = [STATIC_DIR, ]
+STATIC_ROOT = STATIC_DIR
 
 # MEDIA
 MEDIA_ROOT = MEDIA_DIR
@@ -146,3 +148,20 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = reverse_lazy('petit:inicio')
 LOGOUT_REDIRECT_URL = reverse_lazy('petit:inicio')
+
+
+DATABASES['default'] = dj_database_url.config()
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+DEBUG = False
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
