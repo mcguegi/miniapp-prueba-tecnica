@@ -50,7 +50,16 @@ Las actividades las desarrollé de la siguiente manera :
 - Página de consulta Transacciones : Si se accede como cliente ,solicitará que se loggee en el sistema como operador , ya que esta operación es exclusiva para los operadores del comercio . Cuando se autentique , se observará una tabla con las transacciones del comercio y su respectiva información , en la última columna se tiene la posibilidad de Revertir la transacción una vez ya esté pagada. <br>
 - Página de Revertir Transacción : Cuando se revierte la transacción desde la página de consulta de Transacciones , esta redirige a un template que confirma si se revirtió la transacción. <br>
 
-
+## Tabla de URLs
+Función | URL
+------------ | -------------
+Inicio | https://petitapp.herokuapp.com/
+Login | https://petitapp.herokuapp.com/login/
+Compra Producto | https://petitapp.herokuapp.com/petit/productos
+Pagar Orden | https://petitapp.herokuapp.com/petit/pagarOrden/*idOrden*
+Confirmación del Pago | https://petitapp.herokuapp.com/petit/confirmarPago/*idOrden*
+Consulta Transacciones (Login) | https://petitapp.herokuapp.com/petit/consultarTransacciones
+Revertir Orden (Login) | https://petitapp.herokuapp.com/petit/revertirTransaccion
 
 ## Autenticación
 
@@ -67,7 +76,7 @@ El operador de Petit puede ver las transacciones del comercio y por ende reverti
 ## Despliegue
 Desplegué el aplicativo en Heroku, este proceso me tomó mucho tiempo porque nunca había realizado despliegues en esta plataforma, sin embargo , despues de mucho practicar siento que entiendo el proceso y me motiva a realizar otros despliegues aquí . 
 
-El aplicativo se encuentra disponible en : https://petitapp.herokuapp.com/login/
+El aplicativo se encuentra disponible en : https://petitapp.herokuapp.com/
 
 ## Recomendaciones para TPaga
 - ¿Qué sitio de plantillas de internet gratuitas nos recomendaría?
