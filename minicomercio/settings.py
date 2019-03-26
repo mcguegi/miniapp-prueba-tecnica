@@ -33,6 +33,7 @@ HEROKU_URL = 'https://petitapp.herokuapp.com'
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'q)uhi*jc$^&*$apf$n241@(((i588*1bvo7*+*5mncg(ilj6q2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
