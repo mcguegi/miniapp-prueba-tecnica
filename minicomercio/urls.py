@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView 
-from apps.petit.views import logout_view
+from apps.petit.views import inicio,logout_view
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', inicio, name='inicio'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('log_out/', logout_view, name='logout'),
     path('petit/', include('apps.petit.urls'))

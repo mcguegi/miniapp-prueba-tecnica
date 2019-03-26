@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 app_name = 'petit'
 
 urlpatterns = [
-    path('inicio', views.inicio, name='inicio'),
+    #path('inicio', views.inicio, name='inicio'),
     path('productos', views.listarProductos, name='listarProductos'),
     path('hacerOrden', views.hacerOrden, name='hacerOrden'),
     path('pagarOrden/<int:order_id>', views.pagarOrden, name='pagarOrden'),

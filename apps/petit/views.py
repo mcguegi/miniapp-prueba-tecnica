@@ -54,8 +54,6 @@ def hacerOrden(request):
   responseOrder = requestAPI.solicitar_hacer_pago(
   order_id, ip_address, terminal_id, arr_items, total_amount, str(expiration_date))
 
-  print(responseOrder)
-
   if "error_code" in responseOrder:
     messages.error(
      request,
@@ -91,8 +89,6 @@ def pagarOrden(request , order_id):
     kproducto = detail.k_idproduct
     p = str(kproducto)
     q = detail.q_quantity
-    print(str(kproducto))
-    print(type(p))
     product = Product.objects.get(k_idproduct = int(p))
     productDict = {
                 "name" : product.n_product,
@@ -117,7 +113,6 @@ def confirmarPago(request , order_id):
     if "error_code" in responsePay:
       logger.error('{} {}'.format(responsePay.status_code, responsePay.json()))
 
-    print(responsePay)
     status_order = responsePay['status']
 
     if order.n_status == "CRE":
@@ -159,13 +154,11 @@ def revertirPago(request):
     try:
       order = Orderbill.objects.get(k_idorderbill = order_id)
       token = str(order.n_tokenorderbill)
-      print(token)
       requestAPI = ApiTPaga()
       responseRevert = None
       responseRevert = requestAPI.revertir_pago(token)
       if "error_code" in responseRevert:
         print(responseRevert)
-        
       statusResponse = responseRevert["status"]
       orderU = Orderbill.objects.filter(k_idorderbill = order_id).update(n_status= statusResponse[:3].upper())
       
@@ -178,7 +171,6 @@ def revertirPago(request):
       return redirect('petit/consultarTransacciones')
 
 # Views relacionadas con los usuarios
-
 
 def logout_view(request):
     logout(request)

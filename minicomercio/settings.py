@@ -27,15 +27,12 @@ TPAGA_API_URL = 'https://stag.wallet.tpaga.co/merchants/api/v1/payment_requests'
 TPAGA_API_USER = 'miniapp-gato3'
 TPAGA_API_PASSWORD = 'miniappma-123'
 
-
-
 HEROKU_URL = 'https://petitapp.herokuapp.com'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q)uhi*jc$^&*$apf$n241@(((i588*1bvo7*+*5mncg(ilj6q2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -145,8 +142,8 @@ MEDIA_URL = '/media/'
 
 # LOGIN Y LOGOUT
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = reverse_lazy('petit:inicio')
-LOGOUT_REDIRECT_URL = reverse_lazy('petit:inicio')
+LOGIN_REDIRECT_URL = reverse_lazy('inicio')
+LOGOUT_REDIRECT_URL = reverse_lazy('inicio')
 
 
 DATABASES['default'] = dj_database_url.config()
