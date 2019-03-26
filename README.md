@@ -40,15 +40,19 @@ Las actividades las desarrollé de la siguiente manera :
 
 ## Funcionamiento del aplicativo
 <p align="center"><img src="static/images/imgPruebas/1.jpg" alt="Login" height="400" width="250"><img src="static/images/imgPruebas/Foto de María Guerrero(12).jpg" alt="Inicio" height="400" width="250">  <img src="static/images/imgPruebas/Foto de María Guerrero(11).jpg" alt="Inicio" height="400" width="250">  </p>
-- **Login del aplicativo** El login aplica para un operador del comercio con los datos de autenticación que se proveen más adelante. Para entrar como cliente no es necesario autenticarse y debe dar clic sobre el botón *Entrar como cliente*  :man_technologist: <br>
+
+- **Login** El login aplica para un operador del comercio con los datos de autenticación que se proveen más adelante. Para entrar como cliente no es necesario autenticarse y debe dar clic sobre el botón *Entrar como cliente*  :man_technologist: <br>
 
 - **Página principal del comercio** En la página principal del comercio se muestra un slider con una "Nueva colección", justo en ese slider hay un botón que dice "Compralos Ya" , este botón redirige al template para adquirir un producto , el único producto disponible es un Collar GPS para perros y gatos. Se escoge la cantidad de productos que se quieren adquirir y finalmente se da clic en el botón de "Solicitar Pago" . <br>
 <p align="center"><img src="static/images/imgPruebas/Foto de María Guerrero(11).jpg" alt="Login" height="400" width="250"><img src="static/images/imgPruebas/Foto de María Guerrero(9).jpg" alt="Inicio" height="400" width="250">  <img src="static/images/imgPruebas/Foto de María Guerrero(7).jpg" alt="Inicio" height="400" width="250">  </p>
-- **Página de Pagar Producto** En este template se ve el detalle de la orden realizada y el botón "Pagar" ,que redirije a la aplicación de la billetera. :shopping: <br>
-- **Billetera TPaga** moneybag: <br>
-- **Página de Confirmación de Pago** En esta página se observa una pequeña factura con la información del pago realizado. :money_with_wings: <br>
+
+- **Página para pagar el producto** En este template se ve el detalle de la orden realizada y el botón "Pagar" ,que redirije a la aplicación de la billetera. :shopping: <br>
+- **Billetera TPaga (Staging)** moneybag: <br>
+- **Página de confirmación del pago** En esta página se observa una pequeña factura con la información del pago realizado. :money_with_wings: <br>
+
 <p align="center"><img src="static/images/imgPruebas/Foto de María Guerrero(6).jpg" alt="Login" height="400" width="250"><img src="static/images/imgPruebas/Foto de María Guerrero(3).jpg" alt="Inicio" height="400" width="250">  <img src="static/images/imgPruebas/Foto de María Guerrero(1).jpg" alt="Inicio" height="400" width="250">  </p>
-- **Página de consulta Transacciones** Si se accede como cliente ,solicitará que se loggee en el sistema como operador , ya que esta operación es exclusiva para los operadores del comercio . Cuando se autentique , se observará una tabla con las transacciones del comercio y su respectiva información , en la última columna se tiene la posibilidad de Revertir la transacción una vez ya esté pagada. :page_with_curl: <br>
+
+- **Página de consulta de transacciones** Si se accede como cliente ,solicitará que se loggee en el sistema como operador , ya que esta operación es exclusiva para los operadores del comercio . Cuando se autentique , se observará una tabla con las transacciones del comercio y su respectiva información , en la última columna se tiene la posibilidad de Revertir la transacción una vez ya esté pagada. :page_with_curl: <br>
 - **Página de Revertir Transacción** Cuando se revierte la transacción desde la página de consulta de Transacciones , esta redirige a un template que confirma si se revirtió la transacción. :leftwards_arrow_with_hook: <br>
 
 ## Tabla de URLs
