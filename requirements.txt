@@ -7,7 +7,7 @@ chardet==3.0.4
 colorama==0.4.1
 cx-Oracle==7.1.2
 dj-database-url==0.5.0
-Django==2.1.7
+Django==2.2.10
 Faker==1.0.2
 get==2018.11.19
 gunicorn==19.9.0
