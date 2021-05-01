@@ -1,5 +1,5 @@
 
-# PetIT :dog: :cat: : Minicomercio (Prueba Técnica TPaga)
+# PetIT :dog: :cat: : Minicomercio 
 Presentado por : María Camila Guerrero Giraldo. <br>
 Petit es una tienda para mascotas y ofrece el pago de un único producto (Collar GPS Perros y Gatos). La aplicación fue desarrollada con Django y utilicé una plantilla de Html5Up.net que simula una tienda virtual.
 
@@ -83,7 +83,7 @@ Desplegué el aplicativo en Heroku, este proceso me tomó mucho tiempo porque nu
 
 El aplicativo se encuentra disponible en : https://petitapp.herokuapp.com/
 
-## Recomendaciones para TPaga
+## Recomendaciones 
 - ¿Qué sitio de plantillas de internet gratuitas nos recomendaría?
   Personalmente he trabajado con algunos sitios con plantillas gratuitas responsive como:
 
